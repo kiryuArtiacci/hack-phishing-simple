@@ -2,5 +2,5 @@
 ~~MCP Hiring Group~~
 
 ---
-Usando TKinter
+Usando Custom TKinter
 
