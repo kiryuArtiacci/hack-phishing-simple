@@ -1,0 +1,7 @@
+[project]
+name = "Talentos Asociados"
+version = "2025.0.0a1"
+dependencies = [
+  "tk",
+]
+readme = "README.md"

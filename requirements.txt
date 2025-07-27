@@ -1,0 +1,4 @@
+asgiref
+sqlparse
+python-dotenv
+tk
