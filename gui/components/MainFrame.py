@@ -29,7 +29,8 @@ class MainFrame(ctk.CTkFrame):
         )
         menu_frame.grid(row=0, column=0, sticky="nsw")
         self.content_frame = ctk.CTkScrollableFrame(
-            self, corner_radius=0, fg_color="transparent"
+            self, corner_radius=0, fg_color="transparent", 
+            scrollbar_button_color=BUTTON_SKY_BLUE_COLOR, scrollbar_button_hover_color=BUTTON_SKY_BLUE_HOVER
         )
         self.content_frame.grid(row=0, column=1, sticky="nsew", padx=20, pady=20)
         rol = self.controller.rol_actual
@@ -100,8 +101,8 @@ class MainFrame(ctk.CTkFrame):
             command=self.logout,
             height=35,
             corner_radius=8,
-            fg_color=ACCENT_PINK,
-            hover_color=ACCENT_PURPLE,
+            fg_color=BUTTON_SKY_BLUE_COLOR,
+            hover_color=BUTTON_SKY_BLUE_HOVER,
             text_color=TEXT_COLOR,  # CORREGIDO
         ).pack(side="bottom", pady=20, padx=20, fill="x")
         self.show_welcome_message()
