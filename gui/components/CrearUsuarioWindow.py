@@ -58,9 +58,9 @@ class CrearUsuarioWindow(FormularioBase):
             command=self.crear,
             corner_radius=10,
             height=40,
-            fg_color=ACCENT_PURPLE,
             text_color=TEXT_COLOR,
-            hover_color=ACCENT_PINK,
+            fg_color=BUTTON_SKY_BLUE_COLOR,
+            hover_color=BUTTON_SKY_BLUE_HOVER,
         ).pack(pady=15)
         self.actualizar_campos(None)
 
