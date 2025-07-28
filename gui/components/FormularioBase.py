@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import customtkinter as ctk
 import logic as db_manager
-from setup import *
+from styles import *
 
 class FormularioBase(ctk.CTkToplevel):
     def __init__(self, parent, controller, title):
