@@ -11,12 +11,14 @@ from gui.components.GestionarExperienciaWindow import GestionarExperienciaWindow
 from gui.components.GestionCatalogoWindow import GestionCatalogoWindow
 from gui.components.ActualizarVacanteWindow import ActualizarVacanteWindow
 
+
 def crear_tabla(parent, cols, widths={}):
     tree = ttk.Treeview(parent, columns=cols, show="headings", style="Treeview")
     for col in cols:
         tree.heading(col, text=col)
         tree.column(col, width=widths.get(col, 120), anchor="w")
     return tree
+
 
 class MainFrame(ctk.CTkFrame):
     def __init__(self, parent, controller):
@@ -29,8 +31,11 @@ class MainFrame(ctk.CTkFrame):
         )
         menu_frame.grid(row=0, column=0, sticky="nsw")
         self.content_frame = ctk.CTkScrollableFrame(
-            self, corner_radius=0, fg_color="transparent", 
-            scrollbar_button_color=BUTTON_SKY_BLUE_COLOR, scrollbar_button_hover_color=BUTTON_SKY_BLUE_HOVER
+            self,
+            corner_radius=0,
+            fg_color="transparent",
+            scrollbar_button_color=BUTTON_SKY_BLUE_COLOR,
+            scrollbar_button_hover_color=BUTTON_SKY_BLUE_HOVER,
         )
         self.content_frame.grid(row=0, column=1, sticky="nsew", padx=20, pady=20)
         rol = self.controller.rol_actual
@@ -126,6 +131,7 @@ class MainFrame(ctk.CTkFrame):
     def logout(self):
         self.controller.usuario_actual, self.controller.rol_actual = None, None
         from gui.components.LoginFrame import LoginFrame
+
         self.controller.show_frame(LoginFrame)
 
     def show_gestionar_empresas(self):

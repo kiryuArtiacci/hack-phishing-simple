@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import customtkinter as ctk
 from gui.components.LoginFrame import LoginFrame
+
 # import logic as db_manager
 from logic.users import hay_usuarios_registrados
 from styles import *
@@ -15,10 +16,11 @@ def crear_tabla(parent, cols, widths={}):
         tree.column(col, width=widths.get(col, 120), anchor="w")
     return tree
 
+
 class App(ctk.CTk):
     def __init__(self, is_first_run=False):
         super().__init__(fg_color=APP_BG_COLOR)
-        self.title("Sistema de Gestión Hiring Group")
+        self.title("Sistema de Gestión Nexus Talents")
         self.geometry("1100x700")
         self.minsize(800, 600)
         self.is_first_run = is_first_run
