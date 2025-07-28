@@ -3,7 +3,7 @@ from tkinter import ttk, messagebox
 import customtkinter as ctk
 from gui.components.LoginFrame import LoginFrame
 import logic as db_manager
-from setup import *
+from styles import *
 
 
 # --- FUNCIÓN DE UTILIDAD (PARA EL TREEVIEW) ---
@@ -13,10 +13,6 @@ def crear_tabla(parent, cols, widths={}):
         tree.heading(col, text=col)
         tree.column(col, width=widths.get(col, 120), anchor="w")
     return tree
-
-
-# --- CLASES DE FORMULARIO (BASE) ---
-
 
 class App(ctk.CTk):
     def __init__(self, is_first_run=False):

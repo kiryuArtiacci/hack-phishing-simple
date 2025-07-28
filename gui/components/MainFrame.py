@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import customtkinter as ctk
 import logic as db_manager
-from setup import *
+from styles import *
 
 from gui.components.ActualizarUsuarioWindow import ActualizarUsuarioWindow
 from gui.components.CrearUsuarioWindow import CrearUsuarioWindow

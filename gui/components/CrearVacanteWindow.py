@@ -3,7 +3,7 @@ from tkinter import ttk, messagebox
 import customtkinter as ctk
 from gui.components.FormularioBase import FormularioBase
 import logic as db_manager
-from setup import *
+from styles import *
 
 class CrearVacanteWindow(FormularioBase):
     def __init__(self, parent, controller, **kwargs):
