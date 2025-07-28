@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 import customtkinter as ctk
-import logic
+import logic as db_manager
 
 # --- NUEVA PALETA DE COLORES "NEON GRID" ---
 APP_BG_COLOR = "#020617"
