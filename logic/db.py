@@ -10,12 +10,12 @@ def get_db_connection():
     """
     conn = None
     try:
-        conn = sqlite3.connect("hiring_group.db", timeout=10)
+        conn = sqlite3.connect('hiring_group.db', timeout=10)
         conn.row_factory = sqlite3.Row
-        conn.execute("PRAGMA foreign_keys = ON;")
+        conn.execute('PRAGMA foreign_keys = ON;')
         yield conn
     except sqlite3.Error as e:
-        print(f"Error de conexión a la base de datos: {e}")
+        print(f'Error de conexión a la base de datos: {e}')
         raise
     finally:
         if conn:
