@@ -28,7 +28,7 @@ class LoginFrame(ctk.CTkFrame):
             height=35,
             placeholder_text="correo@ejemplo.com",
             fg_color=ENTRY_BG_COLOR,
-            border_color=BUTTON_SECONDARY_COLOR,
+            border_color=BORDER_COLOR_SKY_BLUE,
             text_color=TEXT_COLOR,
             placeholder_text_color=TEXT_COLOR,
         )
@@ -43,7 +43,7 @@ class LoginFrame(ctk.CTkFrame):
             height=35,
             show="*",
             fg_color=ENTRY_BG_COLOR,
-            border_color=BUTTON_SECONDARY_COLOR,
+            border_color=BORDER_COLOR_SKY_BLUE,
             text_color=TEXT_COLOR,
         )
         self.pass_entry.pack()
@@ -54,9 +54,9 @@ class LoginFrame(ctk.CTkFrame):
             command=self.attempt_login,
             height=40,
             corner_radius=10,
-            fg_color=ACCENT_PURPLE,
-            hover_color=ACCENT_PINK,
-            text_color=TEXT_COLOR,  # CORREGIDO
+            fg_color=BUTTON_SKY_BLUE_COLOR,
+            hover_color=BUTTON_SKY_BLUE_HOVER,
+            text_color=TEXT_COLOR,  # CORREGIDO   
         ).pack(pady=20, ipady=5)
         if self.controller.is_first_run:
             ctk.CTkButton(
@@ -65,8 +65,8 @@ class LoginFrame(ctk.CTkFrame):
                 command=self.crear_primer_usuario,
                 height=35,
                 corner_radius=10,
-                fg_color=BUTTON_SECONDARY_COLOR,
-                hover_color=BUTTON_SECONDARY_HOVER,
+                fg_color=BUTTON_SKY_BLUE_COLOR,
+                hover_color=BUTTON_SKY_BLUE_HOVER,
                 text_color=TEXT_COLOR,  # CORREGIDO
             ).pack(pady=10)
 
