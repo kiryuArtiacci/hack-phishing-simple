@@ -2,6 +2,10 @@
 name = "Talentos Asociados"
 version = "2025.0.0a1"
 dependencies = [
+  "asgiref",
+  "sqlparse",
+  "python-dotenv",
+  "customtkinter",
   "tk",
 ]
 readme = "README.md"

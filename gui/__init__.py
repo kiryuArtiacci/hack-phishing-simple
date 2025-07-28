@@ -2,7 +2,8 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import customtkinter as ctk
 from gui.components.LoginFrame import LoginFrame
-import logic as db_manager
+# import logic as db_manager
+from logic.users import hay_usuarios_registrados
 from styles import *
 
 
@@ -61,6 +62,6 @@ class App(ctk.CTk):
 
 
 if __name__ == "__main__":
-    first_run = not db_manager.hay_usuarios_registrados()
+    first_run = not hay_usuarios_registrados()
     app = App(is_first_run=first_run)
     app.mainloop()

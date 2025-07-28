@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 import customtkinter as ctk
-import logic as db_manager
+from logic.users import login_usuario
 from styles import *
 from gui.components.CrearUsuarioWindow import CrearUsuarioWindow
 
@@ -91,7 +91,7 @@ class LoginFrame(ctk.CTkFrame):
             return
         self.controller.config(cursor="watch")
         self.controller.update_idletasks()
-        usuario, rol = db_manager.login_usuario(email, password)
+        usuario, rol = login_usuario(email, password)
         self.controller.config(cursor="")
         if usuario:
             self.controller.usuario_actual, self.controller.rol_actual = usuario, rol
