@@ -49,7 +49,11 @@ class FormularioBase(ctk.CTkToplevel):
                 border_color=BUTTON_SECONDARY_COLOR,
                 button_color=BUTTON_SECONDARY_COLOR,
                 button_hover_color=BUTTON_SECONDARY_HOVER,
+                
                 text_color=TEXT_COLOR,
+                
+                dropdown_fg_color=APP_BG_COLOR,
+                dropdown_text_color=TEXT_COLOR,
             )
         elif tipo == "textbox":
             widget = ctk.CTkTextbox(
