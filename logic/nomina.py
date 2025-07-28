@@ -6,15 +6,17 @@ def ejecutar_nomina_db(id_empresa, mes, anio):
     try:
         with get_db_connection() as conn:
             cursor = conn.cursor()
-            check_query = "SELECT ID_Nomina FROM Nominas WHERE ID_Empresa = ? AND Mes = ? AND Anio = ?"
+            check_query = 'SELECT ID_Nomina FROM Nominas WHERE ID_Empresa = ? AND Mes = ? AND Anio = ?'
             cursor.execute(check_query, (id_empresa, mes, anio))
             if cursor.fetchone():
                 return (
                     False,
-                    "Ya se generó una nómina para esta empresa en este periodo.",
+                    'Ya se generó una nómina para esta empresa en este periodo.',
                     None,
                 )
-            sql_nomina = "INSERT INTO Nominas (ID_Empresa, Mes, Anio) VALUES (?, ?, ?)"
+            sql_nomina = (
+                'INSERT INTO Nominas (ID_Empresa, Mes, Anio) VALUES (?, ?, ?)'
+            )
             cursor.execute(sql_nomina, (id_empresa, mes, anio))
             id_nomina = cursor.lastrowid
             sql_contratos = "SELECT c.ID_Contrato, c.Salario_Acordado FROM Contratos c JOIN Postulaciones post ON c.ID_Postulacion = post.ID_Postulacion JOIN Vacantes v ON post.ID_Vacante = v.ID_Vacante WHERE v.ID_Empresa = ? AND c.Estatus = 'Activo'"
@@ -22,9 +24,13 @@ def ejecutar_nomina_db(id_empresa, mes, anio):
             contratos = cursor.fetchall()
             if not contratos:
                 conn.rollback()
-                return False, "No hay empleados activos para esta empresa.", None
+                return (
+                    False,
+                    'No hay empleados activos para esta empresa.',
+                    None,
+                )
             for contrato in contratos:
-                salario = contrato["Salario_Acordado"]
+                salario = contrato['Salario_Acordado']
                 ded_inces, ded_ivss, comision = (
                     float(salario) * 0.005,
                     float(salario) * 0.01,
@@ -36,7 +42,7 @@ def ejecutar_nomina_db(id_empresa, mes, anio):
                     sql_recibo,
                     (
                         id_nomina,
-                        contrato["ID_Contrato"],
+                        contrato['ID_Contrato'],
                         salario,
                         ded_inces,
                         ded_ivss,
@@ -47,25 +53,25 @@ def ejecutar_nomina_db(id_empresa, mes, anio):
             conn.commit()
             return (
                 True,
-                f"Nómina generada con éxito para {len(contratos)} empleado(s).",
+                f'Nómina generada con éxito para {len(contratos)} empleado(s).',
                 id_nomina,
             )
     except sqlite3.Error as e:
         conn.rollback()
-        return False, f"Error al generar nómina: {e}", None
+        return False, f'Error al generar nómina: {e}', None
 
 
 def get_recibos_por_contratado(id_postulante, mes=None, anio=None):
     with get_db_connection() as conn:
-        query = "SELECT r.Fecha_Pago, r.Salario_Base, r.Salario_Neto_Pagado, n.Mes, n.Anio FROM Recibos r JOIN Nominas n ON r.ID_Nomina = n.ID_Nomina JOIN Contratos c ON r.ID_Contrato = c.ID_Contrato JOIN Postulaciones p ON c.ID_Postulacion = p.ID_Postulacion WHERE p.ID_Postulante = ?"
+        query = 'SELECT r.Fecha_Pago, r.Salario_Base, r.Salario_Neto_Pagado, n.Mes, n.Anio FROM Recibos r JOIN Nominas n ON r.ID_Nomina = n.ID_Nomina JOIN Contratos c ON r.ID_Contrato = c.ID_Contrato JOIN Postulaciones p ON c.ID_Postulacion = p.ID_Postulacion WHERE p.ID_Postulante = ?'
         params = [id_postulante]
         if mes:
-            query += " AND n.Mes = ?"
+            query += ' AND n.Mes = ?'
             params.append(mes)
         if anio:
-            query += " AND n.Anio = ?"
+            query += ' AND n.Anio = ?'
             params.append(anio)
-        query += " ORDER BY n.Anio DESC, n.Mes DESC"
+        query += ' ORDER BY n.Anio DESC, n.Mes DESC'
         return conn.execute(query, params).fetchall()
 
 
