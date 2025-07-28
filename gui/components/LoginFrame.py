@@ -45,7 +45,7 @@ class LoginFrame(ctk.CTkFrame):
             height=35,
             placeholder_text="correo@ejemplo.com",
             fg_color=ENTRY_BG_COLOR,
-            border_color=BUTTON_SECONDARY_COLOR,
+            border_color=BORDER_COLOR_SKY_BLUE,
             text_color=TEXT_COLOR,
             placeholder_text_color=TEXT_COLOR,
         )
@@ -70,7 +70,7 @@ class LoginFrame(ctk.CTkFrame):
             height=35,
             show="*",
             fg_color=ENTRY_BG_COLOR,
-            border_color=BUTTON_SECONDARY_COLOR,
+            border_color=BORDER_COLOR_SKY_BLUE,
             text_color=TEXT_COLOR,
         )
         self.pass_entry.grid(row=0, column=0, sticky="ew")
@@ -103,9 +103,8 @@ class LoginFrame(ctk.CTkFrame):
             corner_radius=10,
             fg_color=ACCENT_PURPLE,
             hover_color=ACCENT_PINK,
-            text_color=TEXT_COLOR,
-        ).grid(row=5, column=0, pady=30, padx=20, ipady=5)
-
+            text_color=TEXT_COLOR,  # CORREGIDO
+        ).pack(pady=20, ipady=5)
         if self.controller.is_first_run:
             ctk.CTkButton(
                 login_container,
@@ -115,14 +114,8 @@ class LoginFrame(ctk.CTkFrame):
                 corner_radius=10,
                 fg_color=BUTTON_SECONDARY_COLOR,
                 hover_color=BUTTON_SECONDARY_HOVER,
-                text_color=TEXT_COLOR,
-            ).pack(pady=20)
-
-    def toggle_password_visibility(self):
-        if self.pass_entry.cget("show") == "*":
-            self.pass_entry.configure(show="")
-        else:
-            self.pass_entry.configure(show="*")
+                text_color=TEXT_COLOR,  # CORREGIDO
+            ).pack(pady=10)
 
     def crear_primer_usuario(self):
         from gui.components.CrearUsuarioWindow import CrearUsuarioWindow
