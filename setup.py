@@ -9,3 +9,15 @@ FONT_NORMAL = ('Segoe UI', 10)
 FONT_BOLD = ('Segoe UI', 10, 'bold')
 FONT_TITLE = ('Segoe UI', 16, 'bold')
 FONT_MENU_TITLE = ('Segoe UI', 12, 'bold')
+
+
+# <div className="min-h-screen w-full relative">
+#   {/* Radial Gradient Background */}
+#   <div
+#     className="absolute inset-0 z-0"
+#     style={{
+#       background: "radial-gradient(125% 125% at 50% 10%, #fff 40%, #6366f1 100%)",
+#     }}
+#   />
+#      {/* Your Content/Components */}
+# </div>
